@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #070913;
+    --bg-secondary: #0d1127;
+    --bg-card: rgba(15, 23, 42, 0.65);
+    --bg-card-hover: rgba(30, 41, 59, 0.85);
+    --border-color: rgba(99, 102, 241, 0.15);
+    --border-glow: rgba(56, 189, 248, 0.4);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --accent-blue: #38bdf8;
+    --accent-indigo: #6366f1;
+    --accent-purple: #a855f7;
+    --accent-cyan: #22d3ee;
+  }
+
+  .light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card-hover: #ffffff;
+    --border-color: rgba(99, 102, 241, 0.2);
+    --border-glow: rgba(56, 189, 248, 0.6);
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent-blue: #0284c7;
+    --accent-indigo: #4f46e5;
+    --accent-purple: #9333ea;
+    --accent-cyan: #0891b2;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode specific text overrides to fix low contrast white text in light mode */
+.light {
+  color: #0f172a !important;
+}
+
+.light .text-slate-100,
+.light .text-slate-200,
+.light .text-slate-300 {
+  color: #0f172a !important;
+}
+
+.light .text-slate-400 {
+  color: #334155 !important;
+}
+
+.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+.light .bg-slate-950,
+.light .bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.light .bg-slate-950\/80,
+.light .bg-slate-900\/80,
+.light .bg-slate-900\/60,
+.light .bg-slate-900\/90 {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  color: #0f172a !important;
+}
+
+.light .border-slate-800,
+.light .border-slate-900 {
+  border-color: #cbd5e1 !important;
+}
+
+.light input,
+.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+.glass-panel-interactive {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px -5px rgba(0, 0, 0, 0.08);
+}
+
+.glass-panel-interactive:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.2);
+}
+
+.light .glass-panel,
+.light .glass-panel-interactive {
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-cyan {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glow effects */
+.glow-bg {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.light .glow-bg {
+  opacity: 0.15;
+}
